@@ -5,6 +5,7 @@ import LoginPage from './components/loginPage'
 import Bookshelves from './components/Bookshelve'
 import SettingsPage from './components/Setting'
 import BookItemDetails from './components/BookItemDetails'
+import Wishlist from './components/wishlist'
 
 function App() {
    
@@ -27,6 +28,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/bookshelves/:id" element={<BookItemDetails />} />
+        </Routes>
+        <Routes>
+          <Route path="/wishlist" element={<Wishlist />} />
         </Routes>
      </BrowserRouter>
       
