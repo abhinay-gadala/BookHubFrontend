@@ -17,8 +17,9 @@ const LoginView = (props) => {
     setPassword(event.target.value);
   };
 
-  const onSubmitSuccess = (jwtToken) => {
+  const onSubmitSuccess = (jwtToken, userId) => {
     Cookies.set("jwt_token", jwtToken, { expires: 7 });
+    localStorage.setItem("UserId", userId); // Store userId for later use
     navigate("/");
   };
 
@@ -30,7 +31,6 @@ const LoginView = (props) => {
 
   const submitForm = async (event) => {
     event.preventDefault();
-    // Replace with your actual API endpoint
     const userDetails = { email, password };
     try {
       const response = await fetch("http://localhost:3005/api/users/login", {
@@ -39,8 +39,9 @@ const LoginView = (props) => {
         body: JSON.stringify(userDetails),
       });
       const data = await response.json();
+      
       if (response.ok) {
-        onSubmitSuccess(data.jwt_token);
+        onSubmitSuccess(data.jwt_token, data.userId); // Pass userId here
       } else {
         onSubmitFailure(data.error_msg || "Login failed");
       }

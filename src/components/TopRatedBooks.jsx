@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const TopRatedBooks = () => {
   const books = [
     { id: 1, image: "https://placehold.co/300x450/e0e0e0/000000?text=The+Secret", title: "The Secret", author: "Rhonda Byrne" },
@@ -9,9 +11,11 @@ const TopRatedBooks = () => {
     <div className="px-4 md:px-16 lg:px-24 py-12">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold text-gray-800">Top Rated Books</h2>
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-colors duration-200">
-          Find Books
-        </button>
+        <Link to="/bookshelves">
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-colors duration-200">
+            Find Books
+          </button>
+        </Link>
       </div>
       <div className="flex items-center justify-center space-x-4 overflow-x-auto py-4">
         <button className="text-gray-400 hover:text-gray-600 transition-colors duration-200 focus:outline-none">

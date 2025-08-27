@@ -11,8 +11,9 @@ const SignUpView = (props) => {
   const  [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
 
-  const onSubmitSuccess = (jwtToken) => {
+  const onSubmitSuccess = (jwtToken, userId) => {
     Cookies.set("jwt_token", jwtToken, { expires: 30 });
+    localStorage.setItem("UserId", userId); // Store userId for later use
     navigate("/", { replace: true });
   };
 
@@ -34,7 +35,8 @@ const SignUpView = (props) => {
       const data = await response.json();
 
       if (response.ok) {
-        onSubmitSuccess(data.jwt_token);
+        console.log("Registration successful:", data);
+        onSubmitSuccess(data.jwt_token, data.userId); // Pass userId here
       } else {
         onSubmitFailure(data.error_msg || "Registration failed");
       }
