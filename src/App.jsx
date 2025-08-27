@@ -2,9 +2,9 @@ import { BrowserRouter, Route, Routes } from 'react-router'
 import './App.css'
 import Home from './components/Home'
 import LoginPage from './components/loginPage'
-import ProtectedRoute from './components/ProtectedRoute'
 import Bookshelves from './components/Bookshelve'
 import SettingsPage from './components/Setting'
+import BookItemDetails from './components/BookItemDetails'
 
 function App() {
    
@@ -25,9 +25,12 @@ function App() {
             <SettingsPage />
           } />
         </Routes>
+        <Routes>
+          <Route path="/bookshelves/:id" element={<BookItemDetails />} />
+        </Routes>
      </BrowserRouter>
       
-    </>
+    </> 
   )
 }
 

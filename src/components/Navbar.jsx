@@ -24,6 +24,7 @@ const Navbar = () => {
       <nav className="flex space-x-4">
         <Link to="/" className="text-gray-600 mt-2 hover:text-blue-500 transition-colors duration-200">Home</Link>
         <Link to="/bookshelves" className="text-gray-600 mt-2 hover:text-blue-500 transition-colors duration-200">Bookshelves</Link>
+        <Link to="/wishlist" className="text-gray-600 mt-2 hover:text-blue-500 transition-colors duration-200">Wishlist</Link>
         <Link to="/settings" className="text-gray-600 mt-2 hover:text-blue-500 transition-colors duration-200">Settings</Link>
         <Link to="/login" className="bg-blue-500 text-white px-4 py-2  rounded-full hover:bg-blue-600 transition-colors duration-200" onClick={handleLogout}>Logout</Link>
       </nav>

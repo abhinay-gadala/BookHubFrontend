@@ -2,9 +2,11 @@ import { Link } from "react-router";
 
 const TopRatedBooks = () => {
   const books = [
-    { id: 1, image: "https://placehold.co/300x450/e0e0e0/000000?text=The+Secret", title: "The Secret", author: "Rhonda Byrne" },
-    { id: 2, image: "https://placehold.co/300x450/e0e0e0/000000?text=Fall+To+Earth", title: "Fall To Earth", author: "Jon Britz" },
-    { id: 3, image: "https://placehold.co/300x450/e0e0e0/000000?text=Borrowed+Magic", title: "Borrowed Magic", author: "Stephanie Foxe" },
+    { id: 1, image: "https://imgv2-2-f.scribdassets.com/img/document/754094308/original/26cd44f0b0/1?v=1", title: "The Psychology of Money: Timeless Lessons on Wealth, Greed, and Happiness", author: "Morgan Housel" },
+    { id: 2, image: "https://m.media-amazon.com/images/I/81aCMT1zKtL._UF894,1000_QL80_.jpg", title: "Harry Potter", author: "J. K. Rowling" },
+    { id: 3, image: "https://m.media-amazon.com/images/I/61mcntVwlkL.jpg", title: "Change Your Mindset To Achieve Success: The Ultimate Guide to Eliminate Self-Doubt, Build Confidence.", author: "Heinen, Ale A." },
+    { id: 4, image: "https://m.media-amazon.com/images/I/71smIoGNeiL._UF1000,1000_QL80_.jpg", title: "To Kill a Mockingbird", author: "Harper Lee" },
+    
   ];
 
   return (
