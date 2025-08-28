@@ -7,7 +7,7 @@ const BookList = (props) => {
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">All Books</h2>
+        <h2 className="text-2xl font-bold text-gray-900">All Books</h2>
         <div className="relative">
           <input
             type="search"

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Home from './components/Home'
 import LoginPage from './components/loginPage'
@@ -6,7 +6,7 @@ import Bookshelves from './components/Bookshelve'
 import SettingsPage from './components/Setting'
 import BookItemDetails from './components/BookItemDetails'
 import Wishlist from './components/wishlist'
-
+import NotFound from './components/NotFound'
 function App() {
    
   return (
@@ -25,16 +25,12 @@ function App() {
           <Route path="/settings" element={
             <SettingsPage />
           } />
-        </Routes>
-        <Routes>
           <Route path="/bookshelves/:id" element={<BookItemDetails />} />
-        </Routes>
-        <Routes>
           <Route path="/wishlist" element={<Wishlist />} />
-        </Routes>
-     </BrowserRouter>
-      
-    </> 
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  </>
   )
 }
 

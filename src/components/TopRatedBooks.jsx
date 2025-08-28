@@ -10,33 +10,61 @@ const TopRatedBooks = () => {
   ];
 
   return (
-    <div className="px-4 md:px-16 lg:px-24 py-12">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">Top Rated Books</h2>
-        <Link to="/bookshelves">
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-colors duration-200">
-            Find Books
-          </button>
-        </Link>
-      </div>
-      <div className="flex items-center justify-center space-x-4 overflow-x-auto py-4">
-        <button className="text-gray-400 hover:text-gray-600 transition-colors duration-200 focus:outline-none">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <div className="flex space-x-6">
-          {books.map((book) => (
-            <BookCard key={book.id} image={book.image} title={book.title} author={book.author} />
-          ))}
-        </div>
-        <button className="text-gray-400 hover:text-gray-600 transition-colors duration-200 focus:outline-none">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
+   <div className="px-4 md:px-16 lg:px-24 py-14 bg-gradient-to-b from-white to-gray-50">
+  {/* Header */}
+  <div className="flex justify-between items-center mb-8">
+    <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">
+      Top Rated Books
+    </h2>
+    <Link to="/bookshelves">
+      <button className="bg-blue-600 text-white px-6 py-2.5 rounded-full shadow-md hover:bg-blue-700 transition-all duration-200">
+        Find Books
+      </button>
+    </Link>
+  </div>
+
+  {/* Carousel */}
+  <div className="flex items-center justify-center space-x-6 overflow-x-auto py-6">
+    {/* Left Arrow */}
+    <button className="text-gray-400 hover:text-blue-600 transition-colors duration-200 focus:outline-none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-10 w-10"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    {/* Book Cards */}
+    <div className="flex space-x-8">
+      {books.map((book) => (
+        <BookCard
+          key={book.id}
+          image={book.image}
+          title={book.title}
+          author={book.author}
+        />
+      ))}
     </div>
+
+    {/* Right Arrow */}
+    <button className="text-gray-400 hover:text-blue-600 transition-colors duration-200 focus:outline-none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-10 w-10"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+</div>
+
   );
 };
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
+import { Navigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import BookList from './BookList';
 
@@ -7,6 +8,8 @@ const Bookshelves = () => {
   const [selectedStatus, setSelectedStatus] = useState('All');
   const [mockBooks, setMockBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+
+  
 
   // Mock data to simulate fetching book information
   useEffect(() => {
@@ -58,32 +61,47 @@ const Bookshelves = () => {
     return matchesStatus && matchesSearch;
   });
 
+  const jwtToken = Cookies.get("jwt_token");
+  if (jwtToken === undefined) {
+    return <Navigate to="/login" />;
+  }
+
   return (
-    <div className="font-sans bg-gray-100 min-h-screen">
-      <Navbar />
-      {/* Your Navbar component goes here */}
-      <div className="flex">
-        <div className="w-56 p-6 bg-gray-50 border-r border-gray-200 h-screen">
-          <h3 className="text-lg font-bold text-gray-800 mb-4">Bookshelves</h3>
-          <ul className="space-y-2 text-sm text-gray-600">
-            {['All', 'Love', 'Horror', 'Psychology', 'Rich'].map(status => (
-              <li key={status}>
-                <a
-                  href="#"
-                  onClick={() => setSelectedStatus(status)}
-                  className={`block py-2 px-3 rounded-md transition-colors ${selectedStatus === status ? 'bg-blue-100 text-blue-800 font-medium' : 'hover:bg-gray-200'}`}
-                >
-                  {status}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <main className="flex-1">
-          <BookList books={filteredBooks} onSearchChange={setSearchTerm} />
-        </main>
-      </div>
-    </div>
+    <div className="font-sans bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+  <Navbar />
+  {/* Layout */}
+  <div className="flex">
+    {/* Sidebar */}
+    <aside className="w-60 p-6 bg-white border-r border-gray-200 shadow-sm h-screen sticky top-0">
+      <h3 className="text-xl font-extrabold text-gray-800 mb-6 tracking-tight">
+        Bookshelves
+      </h3>
+      <ul className="space-y-2 text-sm font-medium">
+        {["All", "Love", "Horror", "Psychology", "Rich"].map((status) => (
+          <li key={status}>
+            <a
+              href="#"
+              onClick={() => setSelectedStatus(status)}
+              className={`block py-2.5 px-4 rounded-lg transition-all duration-200 ${
+                selectedStatus === status
+                  ? "bg-blue-600 text-white shadow-md"
+                  : "text-gray-700 hover:bg-gray-100 hover:text-blue-600"
+              }`}
+            >
+              {status}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </aside>
+
+    {/* Main Content */}
+    <main className="flex-1 p-8">
+      <BookList books={filteredBooks} onSearchChange={setSearchTerm} />
+    </main>
+  </div>
+</div>
+
   );
 }
 
