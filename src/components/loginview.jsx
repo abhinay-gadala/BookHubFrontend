@@ -58,65 +58,76 @@ const LoginView = (props) => {
   const { toggleView } = props;
 
   return (
-    <div className="flex flex-col items-center justify-center h-full bg-white">
-      <div className="flex flex-col justify-center mb-6 ">
-        <img
-          src="https://placehold.co/120x40/ffffff/000000?text=BookHub"
-          alt="BookHub Logo"
-          className="h-10"
-        />
-       
-      </div>
-       <h2 className="text-2xl font-semibold text-center mb-6 text-gray-800">
-        Login Your Account
-      </h2>
-      <form
-        className="bg-white p-8 rounded w-full max-w-md"
-        onSubmit={submitForm}
+    <div className="flex flex-col items-center justify-center h-full bg-white dark:bg-white">
+  <div className="flex items-center space-x-3 mb-1">
+    <img 
+      src="https://res.cloudinary.com/dkwllsxnd/image/upload/v1756227343/bookhub-high-resolution-logo-transparent_ubbg5q.png" 
+      alt="BookHub Logo" 
+      className="h-10 w-auto drop-shadow-md" 
+    />
+    <span className="text-2xl font-extrabold text-gray-800 dark:text-gray-800 tracking-wide">
+      BookHub
+    </span>
+  </div>
+
+  <h2 className="text-2xl font-semibold text-center mb-6 text-gray-800 dark:text-gray-800">
+    Login Your Account
+  </h2>
+
+  <form
+    className="bg-white dark:bg-white p-8 rounded w-full max-w-md"
+    onSubmit={submitForm}
+  >
+    <label className="block text-gray-700 dark:text-gray-700 font-medium mb-2" htmlFor="email">
+      Email
+    </label>
+    <input
+      type="email"
+      placeholder="Email"
+      value={email}
+      onChange={onChangeEmail}
+      className="w-full mb-4 px-4 py-2 border rounded bg-white dark:bg-white text-gray-800 dark:text-gray-800"
+      required
+    />
+
+    <label className="block text-gray-700 dark:text-gray-700 font-medium mb-2" htmlFor="password">
+      Password
+    </label>
+    <input
+      type="password"
+      placeholder="Password"
+      value={password}
+      onChange={onChangePassword}
+      className="w-full mb-4 px-4 py-2 border rounded bg-white dark:bg-white text-gray-800 dark:text-gray-800"
+      required
+    />
+
+    <button
+      type="submit"
+      className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+    >
+      Login
+    </button>
+
+    {showSubmitError && (
+      <p className="text-red-500 mt-4 text-center">
+        {errorMsg || "Invalid email or password"}
+      </p>
+    )}
+
+    <p className="mt-4 text-center text-gray-700">
+      Don't have an account?{" "}
+      <button
+        type="button"
+        className="text-blue-500 underline"
+        onClick={toggleView}
       >
-        <label className="block text-gray-700 font-medium mb-2" htmlFor="email">
-          Email
-        </label>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={onChangeEmail}
-          className="w-full mb-4 px-4 py-2 border rounded"
-          required
-        />
-        <label className="block text-gray-700 font-medium mb-2" htmlFor="password">
-          Password
-        </label>
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={onChangePassword}
-          className="w-full mb-4 px-4 py-2 border rounded"
-          required
-        />
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-        >
-          Login
-        </button>
-        {showSubmitError && (
-          <p className="text-red-500 mt-4 text-center">{errorMsg || "Invalid email or password"}</p>
-        )}
-        <p className="mt-4 text-center">
-          Don't have an account?{" "}
-          <button
-            type="button"
-            className="text-blue-500 underline"
-            onClick={toggleView}
-          >
-            Sign Up
-          </button>
-        </p>
-      </form>
-    </div>
+        SignUp
+      </button>
+    </p>
+  </form>
+</div>
+
   );
 };
 

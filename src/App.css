@@ -1,1 +1,21 @@
+/* index.css */
 
+/* Ensure the page takes full height */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Default light mode */
+body {
+  background-color: #ffffff; /* light background */
+  color: #1f2937; /* gray-800 text */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode */
+.dark body {
+  background-color: #18191A; /* dark background */
+  color: #f3f4f6; /* gray-100 text */
+}

@@ -1,36 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import Cookies from "js-cookie";
 import { Navigate } from "react-router-dom";
+import { WishlistContext } from "../reducers/wishListReducer";
 import Navbar from "./Navbar";
 
 
 
 const Wishlist = () => {
- const [wishlistItems, setWishlistItems] = useState([]);
+   const { wishlist, dispatch } = useContext(WishlistContext);
 
-
-  useEffect(() => {
-    const fetchWishlist = async () => {
-      const token = Cookies.get("jwt_token");
-      try {
-        const response = await fetch("http://localhost:3005/api/getwishlist", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          }
-        });
-        if (!response.ok) {
-          throw new Error("Failed to fetch wishlist");
-        }
-        const data = await response.json();
-        setWishlistItems(data);
-      } catch (error) {
-        console.error("Error fetching wishlist:", error);
-      }
-    };
-    fetchWishlist();
-  }, []);
 
   // Function to handle deleting a wishlist item
 const handleDelete = async (id) => {
@@ -51,10 +29,11 @@ const handleDelete = async (id) => {
     }
 
     const data = await response.json();
+    dispatch({ type: "REMOVE_ITEM", payload: id });
     console.log("Wishlist item deleted:", data);
 
     // ✅ Update state immediately (removes item without refresh)
-    setWishlistItems((prev) => prev.filter((item) => item._id !== id));
+    
 
   } catch (error) {
     console.error("Error deleting wishlist item:", error);
@@ -69,42 +48,48 @@ const jwtToken = Cookies.get("jwt_token");
   return (
     <>
       <Navbar />
-    <div className="flex flex-col items-center justify-center min-h-screen w-full bg-gradient-to-br from-gray-100 to-gray-200 p-6">
-  <div className="w-full max-w-3xl bg-white shadow-2xl rounded-2xl p-8">
-    <h1 className="text-4xl font-extrabold text-gray-900 mb-8 text-center tracking-wide">
+    <div className="flex flex-col items-center justify-center min-h-screen w-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-[#18191A] dark:to-[#18191A] p-6">
+  <div className="w-full max-w-3xl bg-white dark:bg-[#3A3B3E] shadow-2xl rounded-2xl p-8">
+    <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-8 text-center tracking-wide">
       My Wishlist
     </h1>
 
-    {wishlistItems.length > 0 ? (
+    {wishlist.length > 0 ? (
       <div className="space-y-6">
-        {wishlistItems.map((item) => (
+        {wishlist.map((item) => (
           <div
             key={item.id}
-            className="flex items-center space-x-6 p-5 bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="flex items-center space-x-6 p-5 bg-gray-50 dark:bg-[#282A2E] rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
           >
             {/* Image Div */}
             <div className="flex-shrink-0">
               <img
                 src={item.imageUrl}
                 alt={item.title}
-                className="w-24 h-32 object-cover rounded-lg border border-gray-200"
+                className="w-24 h-32 object-cover rounded-lg border border-gray-200 dark:border-gray-700"
               />
             </div>
 
             {/* Details Div */}
             <div className="flex-grow">
-              <h2 className="text-2xl font-semibold text-gray-800">{item.title}</h2>
-              <p className="text-gray-600 text-sm mt-1 italic">{item.author}</p>
+              <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
+                {item.title}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300 text-sm mt-1 italic">
+                {item.author}
+              </p>
               <div className="flex items-center space-x-6 mt-3 text-sm">
-                <p>
+                <p className="dark:text-gray-300">
                   Rating:{" "}
                   <span className="font-medium text-yellow-500">
                     {item.rating} ⭐
                   </span>
                 </p>
-                <p>
+                <p className="dark:text-gray-300">
                   Status:{" "}
-                  <span className="font-bold text-blue-600">{item.status}</span>
+                  <span className="font-bold text-blue-600 dark:text-blue-400">
+                    {item.status}
+                  </span>
                 </p>
               </div>
             </div>
@@ -120,10 +105,15 @@ const jwtToken = Cookies.get("jwt_token");
         ))}
       </div>
     ) : (
-      <img src="https://res.cloudinary.com/dkwllsxnd/image/upload/v1756402395/Gemini_Generated_Image_ecatxiecatxiecat_ioa14l.png" alt="Empty Wishlist" className="text-center h-9/12 rounded-2xl mx-auto mt-4" />
+      <img
+        src="https://res.cloudinary.com/dkwllsxnd/image/upload/v1756402395/Gemini_Generated_Image_ecatxiecatxiecat_ioa14l.png"
+        alt="Empty Wishlist"
+        className="text-center h-9/12 rounded-2xl mx-auto mt-4"
+      />
     )}
   </div>
-  </div>
+</div>
+
 
     </>
     
