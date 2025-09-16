@@ -11,9 +11,10 @@ const SignUpView = (props) => {
   const  [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
 
-  const onSubmitSuccess = (jwtToken, userId) => {
-    Cookies.set("jwt_token", jwtToken, { expires: 30 });
-    localStorage.setItem("UserId", userId); // Store userId for later use
+  const onSubmitSuccess = (jwtToken, user) => {
+    Cookies.set("jwt_token", jwtToken, { expires: 7 });
+     Cookies.set("role", user.role, {expires : 7 })
+    localStorage.setItem("UserId", user.id); // Store userId for later use
     navigate("/", { replace: true });
   };
 
@@ -36,7 +37,7 @@ const SignUpView = (props) => {
 
       if (response.ok) {
         console.log("Registration successful:", data);
-        onSubmitSuccess(data.jwt_token, data.userId); // Pass userId here
+        onSubmitSuccess(data.token, data.user); // Pass userId here
       } else {
         onSubmitFailure(data.error_msg || "Registration failed");
       }

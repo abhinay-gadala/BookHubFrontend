@@ -2,6 +2,7 @@ import { useContext } from "react";
 import Cookies from "js-cookie";
 import { Navigate } from "react-router-dom";
 import { WishlistContext } from "../reducers/wishListReducer";
+import { RingLoader } from "react-spinners";
 import Navbar from "./Navbar";
 
 
@@ -43,6 +44,20 @@ const handleDelete = async (id) => {
 const jwtToken = Cookies.get("jwt_token");
   if (jwtToken === undefined) {
     return <Navigate to="/login" />;
+  }
+
+
+  if(!wishlist){ 
+    return(
+      <>
+        <Navbar />
+        <div className="flex-1 flex-column p-8 min-h-screen bg-white dark:bg-[#18191A] shadow-smcd">
+          <h1 className="flex justify-center items-center">
+          <RingLoader color="#4A90E2" size={80} />
+          </h1>
+        </div>
+      </>
+    )
   }
 
   return (

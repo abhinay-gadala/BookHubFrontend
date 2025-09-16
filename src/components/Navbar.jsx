@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import Cookies from 'js-cookie'
 import { useContext } from "react";
 import { WishlistContext } from "../reducers/wishListReducer";
 import { useDarkContext } from "../reducers/darkModeContext";
@@ -8,7 +9,9 @@ const Navbar = () => {
   const { wishlist } = useContext(WishlistContext);
 
   const { darkMode, toggleDarkMode } = useDarkContext();
-   console.log(darkMode)  
+
+  const role = Cookies.get("role") 
+  const admis = role == "admin"; 
 
   return (
   <header className="bg-white dark:bg-[#3A3B3E] shadow-md py-4 px-8 md:px-16 lg:px-24 flex justify-between items-center rounded-b-2xl border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50"> 
@@ -24,12 +27,14 @@ const Navbar = () => {
   <nav className="flex space-x-6">
     <Link to="/" className="text-gray-600 dark:text-gray-300 mt-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 font-medium">Home</Link>
     <Link to="/bookshelves" className="text-gray-600 dark:text-gray-300 mt-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 font-medium">Bookshelves</Link>
-    <Link to="/wishlist" className="text-gray-600 dark:text-gray-300 mt-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 font-medium">
+    { !admis && (
+      <Link to="/wishlist" className="text-gray-600 dark:text-gray-300 mt-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 font-medium">
       Wishlist 
       {wishlist.length > 0 
         ? <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full ml-2">{wishlist.length}</span> 
         : <span> </span>} 
-    </Link>
+      </Link>
+    )}
     <Link to="/settings" className="text-gray-600 dark:text-gray-300 mt-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 font-medium">Settings</Link>
 
     <div className="mt-2 text-gray-600 dark:text-gray-300">

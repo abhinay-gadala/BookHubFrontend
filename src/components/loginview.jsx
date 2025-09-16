@@ -17,9 +17,10 @@ const LoginView = (props) => {
     setPassword(event.target.value);
   };
 
-  const onSubmitSuccess = (jwtToken, userId) => {
+  const onSubmitSuccess = (jwtToken, user) => {
     Cookies.set("jwt_token", jwtToken, { expires: 7 });
-    localStorage.setItem("UserId", userId); // Store userId for later use
+    Cookies.set("role", user.role, {expires : 7 })
+    localStorage.setItem("UserId", user.id); // Store userId for later use
     navigate("/");
   };
 
@@ -41,7 +42,8 @@ const LoginView = (props) => {
       const data = await response.json();
       
       if (response.ok) {
-        onSubmitSuccess(data.jwt_token, data.userId); // Pass userId here
+        console.log("Registration successful:", data);
+        onSubmitSuccess(data.token, data.user); // Pass userId here
       } else {
         onSubmitFailure(data.error_msg || "Login failed");
       }
