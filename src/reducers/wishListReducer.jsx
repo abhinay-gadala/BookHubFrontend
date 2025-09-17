@@ -26,7 +26,7 @@ export function WishlistProvider({ children }) {
       if (!token) return;
 
       try {
-        const response = await fetch("http://localhost:3005/api/getwishlist", {
+        const response = await fetch("https://bookhubbackend-4urx.onrender.com/api/getwishlist", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

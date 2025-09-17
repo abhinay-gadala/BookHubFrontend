@@ -34,7 +34,7 @@ const LoginView = (props) => {
     event.preventDefault();
     const userDetails = { email, password };
     try {
-      const response = await fetch("http://localhost:3005/api/users/login", {
+      const response = await fetch("https://bookhubbackend-4urx.onrender.com/api/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userDetails),

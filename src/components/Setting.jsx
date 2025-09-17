@@ -31,7 +31,7 @@ const SettingsPage = () => {
         }
 
         const response = await fetch(
-          `http://localhost:3005/api/users/${userId}`,
+          `https://bookhubbackend-4urx.onrender.com/api/users/${userId}`,
           {
             method: "GET",
             headers: {
@@ -85,7 +85,7 @@ const SettingsPage = () => {
       if (password) updateData.password = password;
 
       const response = await fetch(
-        `http://localhost:3005/api/users/updates/${userId}`,
+        `https://bookhubbackend-4urx.onrender.com/api/users/updates/${userId}`,
         {
           method: "PUT",
           headers: {

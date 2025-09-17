@@ -17,7 +17,7 @@ const handleDelete = async (id) => {
     const token = Cookies.get("jwt_token");
     console.log("Deleting item with ID:", id);
 
-    const response = await fetch(`http://localhost:3005/api/deletewishlist/${id}`, {
+    const response = await fetch(`https://bookhubbackend-4urx.onrender.com/api/deletewishlist/${id}`, {
       method: "DELETE",
       headers: {
         "Authorization": `Bearer ${token}`,

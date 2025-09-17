@@ -10,7 +10,7 @@ const BookItemDetails = () => {
   console.log("Book ID from URL:", id); // Debugging line
   useEffect(() => {
     const fetchBookDetails = async () => {
-      const url = `http://localhost:3005/api/books/${id}`;
+      const url = `https://bookhubbackend-4urx.onrender.com/api/books/${id}`;
       try {
         const token = Cookies.get("jwt_token");
         const response = await fetch(url, {

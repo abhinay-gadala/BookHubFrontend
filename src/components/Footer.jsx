@@ -40,19 +40,19 @@ function Footer() {
       <div>
         <h3 className="text-md font-semibold text-gray-700 dark:text-gray-200 mb-3">Follow Us</h3>
         <div className="flex justify-center md:justify-start space-x-5 mb-3">
-          <a href="https://github.com/abhinay-gadala" aria-label="Github" className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition">
+          <a href="https://github.com/abhinay-gadala"  target="_blank" aria-label="Github" className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition">
             <SiGithub className="h-6 w-6"/>
           </a>
-          <a href="https://www.instagram.com/abhi._7.__/" aria-label="Instagram" className="text-gray-500 dark:text-gray-400 hover:text-pink-500 transition">
+          <a href="https://www.instagram.com/abhi._7.__/" target="_blank" aria-label="Instagram" className="text-gray-500 dark:text-gray-400 hover:text-pink-500 transition">
             <FaInstagram className="h-6 w-6"/>
           </a>
-          <a href="https://x.com/abhinay_2105" aria-label="Twitter" className="text-gray-500 dark:text-gray-400 hover:text-blue-500 transition">
+          <a href="https://x.com/abhinay_2105" target="_blank" aria-label="Twitter" className="text-gray-500 dark:text-gray-400 hover:text-blue-500 transition">
             <FaTwitter className="h-6 w-6"/>
           </a>
-          <a href="https://www.youtube.com/channel/UCFWyQmn-BfXGBLcidaa7zew" aria-label="YouTube" className="text-gray-500 dark:text-gray-400 hover:text-red-600 transition">
+          <a href="https://www.youtube.com/channel/UCFWyQmn-BfXGBLcidaa7zew" target="_blank" aria-label="YouTube" className="text-gray-500 dark:text-gray-400 hover:text-red-600 transition">
             <FaYoutube className="h-6 w-6"/>
           </a>
-          <a href="https://www.linkedin.com/in/gadala-abhinay/" aria-label="LinkedIn" className="text-gray-500 dark:text-gray-400 hover:text-blue-700 dark:hover:text-blue-400 transition">
+          <a href="https://www.linkedin.com/in/gadala-abhinay/" target="_blank" aria-label="LinkedIn" className="text-gray-500 dark:text-gray-400 hover:text-blue-700 dark:hover:text-blue-400 transition">
             <FaLinkedin className="h-6 w-6"/>
           </a>
         </div>

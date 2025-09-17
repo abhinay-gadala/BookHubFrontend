@@ -27,7 +27,7 @@ const SignUpView = (props) => {
     event.preventDefault();
     const userDetails = { name, email, password };
     try {
-      const response = await fetch("http://localhost:3005/api/users/signup", {
+      const response = await fetch("https://bookhubbackend-4urx.onrender.com/api/users/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userDetails),

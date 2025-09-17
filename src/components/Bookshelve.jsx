@@ -18,7 +18,7 @@ const Bookshelves = () => {
   // Fetch books from backend
   useEffect(() => {
     async function fetchBooks() {
-      const url = "http://localhost:3005/api/books";
+      const url = "https://bookhubbackend-4urx.onrender.com/api/books";
       try {
         const token = Cookies.get("jwt_token");
         const option = {

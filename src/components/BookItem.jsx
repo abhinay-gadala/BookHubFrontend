@@ -12,7 +12,7 @@ const BookItem = ({ book, isAdmin, setBooks }) => {
   const handleAddToWishlist = async () => {
     const token = Cookies.get("jwt_token");
     try {
-      const response = await fetch("http://localhost:3005/api/addwishlist", {
+      const response = await fetch("https://bookhubbackend-4urx.onrender.com/api/addwishlist", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +41,7 @@ const BookItem = ({ book, isAdmin, setBooks }) => {
   const handleDelete = async () => {
     try {
       const token = Cookies.get("jwt_token");
-      const response = await fetch(`http://localhost:3005/api/books/${book.id}`, {
+      const response = await fetch(`https://bookhubbackend-4urx.onrender.com/api/books/${book.id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
