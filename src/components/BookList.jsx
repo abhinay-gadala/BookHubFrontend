@@ -14,6 +14,7 @@ const BookList = ({ books, onSearchChange, isAdmin, setBooks }) => {
     Description: "",
     PublishedDate: "",
     CompanyRights: "",
+    BookLink: "",
   });
 
   // ✅ Handle input change
@@ -53,6 +54,7 @@ const BookList = ({ books, onSearchChange, isAdmin, setBooks }) => {
         Description: "",
         PublishedDate: "",
         CompanyRights: "",
+        BookLink: "",
       });
       alert("Successfully uploaded")
     } catch (error) {
@@ -219,6 +221,20 @@ const BookList = ({ books, onSearchChange, isAdmin, setBooks }) => {
 
               <label className="flex flex-col md:col-span-2">
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Book Link
+                </span>
+                <input
+                  type="text"
+                  name="BookLink"
+                  value={formData.BookLink}
+                  onChange={handleChange}
+                  className="p-2 border rounded mt-1"
+                  required
+                />
+              </label>
+
+              <label className="flex flex-col md:col-span-2">
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   Description
                 </span>
                 <textarea
@@ -235,13 +251,13 @@ const BookList = ({ books, onSearchChange, isAdmin, setBooks }) => {
                 <button
                   type="button"
                   onClick={() => setShowForm(false)}
-                  className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded"
+                  className="bg-gray-800 rounded-full hover:bg-gray-600 text-white py-2 px-4 rounded"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded"
+                  className="bg-blue-600 text-white px-6 py-2.5 rounded-full shadow-md hover:bg-blue-700 transition-all duration-200"
                 >
                   Submit
                 </button>

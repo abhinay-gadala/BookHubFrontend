@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { Navigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import BookList from './BookList';
-import { RingLoader } from 'react-spinners';
+import { ClipLoader } from 'react-spinners';
 
 const Bookshelves = () => {
   const [selectedStatus, setSelectedStatus] = useState('All');
@@ -106,7 +106,7 @@ const Bookshelves = () => {
             />
           ) : (
             <h1 className="flex justify-center items-center">
-              <RingLoader color="#4A90E2" size={80} />
+              <ClipLoader color="#4A90E2" size={60} />
             </h1>
           )}
         </main>

@@ -4,6 +4,8 @@ import Cookies from "js-cookie";
 import { Link } from "react-router";
 import { useContext } from "react";
 import { WishlistContext } from "../reducers/wishListReducer";
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 const BookItem = ({ book, isAdmin, setBooks }) => {
   const { wishlist, dispatch } = useContext(WishlistContext);
@@ -94,22 +96,30 @@ const BookItem = ({ book, isAdmin, setBooks }) => {
               </span>
             </span>
           </div>
+          <div>
+             <button
+             className="bg-blue-600 hover:bg-blue-700 hover:shadow-lg text-white px-5 py-2 rounded-full font-medium shadow-md transition-all duration-200 ">
+              Read More
+            </button>
+          </div>
         </Link>
 
         <div>
           {!isAdmin && (
-            <button
-              className={`px-5 py-2 rounded-full font-medium shadow-md transition-all duration-200 
+             <button
+              className={`absolute top-0 right-0 px-5 py-2 rounded-tr-xl font-medium  transition-all duration-200
                 ${
                   isInWishlist
-                    ? "bg-gray-500 dark:bg-gray-700 cursor-not-allowed text-white"
-                    : "bg-blue-600 hover:bg-blue-700 hover:shadow-lg text-white"
+                    ? "bg-white text-[#3a3b3e] dark:bg-[#3a3b3e] dark:text-[#3a3b3e]" // 🔄 switches automatically
+                    : "bg-white text-[#3a3b3e]  hover:bg-blue-700 hover:rounded-lg hover:shadow-lg dark:bg-[#3a3b3e] dark:text-white"
                 }`}
               onClick={handleAddToWishlist}
               disabled={isInWishlist}
             >
-              {isInWishlist ? "Added to Wishlist" : "Add to Wishlist"}
+              {isInWishlist ? <FaHeart className="text-red-500" /> : <FaRegHeart />}
             </button>
+
+
           )}
         </div>
         <div>

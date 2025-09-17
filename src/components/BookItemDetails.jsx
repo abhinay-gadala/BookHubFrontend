@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"; // ✅ FIXED
 import { Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import Navbar from "./Navbar";
+import { PuffLoader } from 'react-spinners';
 
 const BookItemDetails = () => {
   const [bookDetails, setBookDetails] = useState(null);
@@ -38,6 +39,7 @@ const BookItemDetails = () => {
             : "/images/placeholder.png",
           description: result.data.Description || "No description available.",
           publisher: result.data.CompanyRights || "Unknown",
+          bookLink: result.data.BookLink || "Unknown",
           releaseDate: result.data.PublishedDate || "Unknown",
         };
 
@@ -54,7 +56,7 @@ const BookItemDetails = () => {
   if (!bookDetails) {
   return (
     <div className="min-h-screen flex items-center justify-center text-lg font-medium">
-      Loading book details...
+      <PuffLoader color="#4A90E2" size={60}/>
     </div>
   );
 }
@@ -117,6 +119,7 @@ return (
         </span>
       </div>
 
+
       {/* Publisher */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-start md:space-x-3">
         <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide">
@@ -126,8 +129,20 @@ return (
           {bookDetails.publisher}
         </span>
       </div>
+
+       <div className="flex flex-col md:flex-row md:items-center md:justify-start md:space-x-3 mt-3">
+          <a href={bookDetails.bookLink} target="_blank">
+        <button 
+          className="bg-blue-600 text-white px-6 py-2.5 rounded-full shadow-md hover:bg-blue-700 transition-all duration-200"
+        >
+          Read
+        </button>
+    </a>
+      </div>
     </div>
   </div>
+
+ 
 
   {/* About Author Section */}
   <div className="p-10 rounded-2xl bg-white dark:bg-[#3A3B3E] w-full max-w-5xl mx-auto mt-8 border border-gray-200 dark:border-gray-700">
